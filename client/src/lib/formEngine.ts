@@ -1,5 +1,5 @@
 export type FieldType = 'text' | 'number' | 'date' | 'select' | 'checkbox' 
-// export type Op = 'eq' | 'neq' | 'gt' | 'filled' 
+
 export interface  Condition { field: string; equals: string}
 
 export interface Field {
