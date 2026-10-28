@@ -140,6 +140,7 @@ model Workspace {
   tasks            Task[]
   Comment          Comment[]
   sprints          Sprint[]
+  formTemplates    FormTemplate[]
 }
 
 model User {
@@ -237,4 +238,26 @@ model Sprint {
   workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
 
   @@index([workspaceId, status])
+}
+
+
+model FormTemplate {
+  id              String                @id @default(uuid())
+  name            String
+  schema          String
+  version         Int                   @default(1)
+  createdAt       DateTime              @default(now())
+  workspaceId     String
+  workspace       Workspace             @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  submissions     FormSubmission[]
+}
+
+model FormSubmission {
+  id                String          @id @default(uuid())
+  templateId        String
+  template          FormTemplate    @relation(fields: [templateId], references: [id], onDelete: Cascade)
+  templateVersion   Int
+  schema            String
+  values            String
+  createdAt         DateTime        @default(now())
 }

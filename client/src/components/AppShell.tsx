@@ -15,6 +15,9 @@ import WelcomeScreen from './onboarding/WelcomeScreen'
 import TasksBoard from './tasks/TasksBoard'
 import Dashboard from './dashboard/Dashboard'
 import GenerateTasksModal from './tasks/GenerateTasksModal'
+import FormsPanel from './forms/FormsPanel'
+
+
 
 export default function AppShell() {
   const {
@@ -115,7 +118,7 @@ export default function AppShell() {
   )
   const mainContent = (
     <div className="flex flex-col h-full overflow-hidden">
-      {mainView === 'tasks' ? <TasksBoard /> : mainView === 'home' ? <Dashboard /> : noDocuments ? <WelcomeScreen /> : <EditorPanel />}
+      {mainView === 'tasks' ? <TasksBoard /> : mainView === 'home' ? <><FormsPanel /><Dashboard /></> : noDocuments ? <WelcomeScreen /> : <EditorPanel />}
     </div>
   )
 

@@ -21,6 +21,7 @@ import commentsRouter from './routes/comments.js'
 import sprintsRouter from './routes/sprints.js'
 import { integrationsRouter } from './routes/integrations.js'
 import type { HttpFetch } from './lib/github.js'
+import formsRouter from './routes/forms.js'
 
 interface AppDeps {
   streamChat?: StreamChat
@@ -67,6 +68,7 @@ export function createApp({
   app.use('/api/db/members', membersRouter)
   app.use('/api/db/comments', commentsRouter)
   app.use('/api/db/sprints', sprintsRouter)
+  app.use('/api/db/forms', formsRouter)
 
   // Unknown API routes are 404s, not the React app
   app.use('/api', (_req, res) => {
